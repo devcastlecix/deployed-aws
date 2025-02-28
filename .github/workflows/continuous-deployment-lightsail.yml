@@ -1,7 +1,7 @@
 name: CD. Deploy to AWS Lightsail
 on:
   push:
-    branches: [master-lightsail]
+    branches: [main]
 
 env:
   REPOSITORY: ${{ github.repository }}
