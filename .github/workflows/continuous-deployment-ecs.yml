@@ -8,7 +8,7 @@ env:
   AWS_ECR_URL: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION_ECS }}.amazonaws.com
 jobs:
   cd:
-    name: Build & Push GitHub Package & Deploy on Render Docker Image
+    name: Build & Push GitHub Package & Deploy on Fargate
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
@@ -52,4 +52,4 @@ jobs:
       # Se debe subir en primer lugar el docker al repositorio de AWS ECR
       - name: Update ECS service
         run: |
-          aws ecs update-service --cluster devops-cluster --service deployed-aws-ecs-service --force-new-deployment
+          aws ecs update-service --cluster devops-cluster-ecs --service deployed-aws-ecs-service --force-new-deployment
